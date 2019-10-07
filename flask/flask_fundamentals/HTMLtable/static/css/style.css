@@ -1,0 +1,16 @@
+/* CSS for HTML table */
+#thetable {
+    border: 2px solid black;
+    font-family: sans-serif;
+    
+}
+table, th, td {
+    border: 1px solid black;
+}
+table {
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}

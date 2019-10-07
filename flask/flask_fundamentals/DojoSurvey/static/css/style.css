@@ -1,0 +1,26 @@
+*{
+    border: 1px black solid;
+    font-family: sans-serif;
+}
+#mainbox {
+    margin: auto;
+    width: 35%;
+    height: 800px;
+    border: 1px solid green;
+    padding: 10px;
+}
+
+#namebox {
+    margin: 5px;
+    display: inline-block;
+    width: 95%;
+}
+    #yournametxt {
+        display: inline-block;
+        margin-left: 15px;
+    }
+    #name {
+        margin-left: 10px;
+        display: inline-block;
+        border: 2px black solid;
+    }

@@ -1,0 +1,59 @@
+*{
+    /* border: 1px black solid; */
+    font-family: sans-serif;
+}
+.myclass {
+    text-align: center;
+}
+#buttonholder {
+    width: 100%;
+    text-align: center;
+}
+form {
+    display: inline-block;
+    align-items: center;
+}
+#centerthis {
+    align-items: center;
+    text-align: center;
+    padding-bottom: 20px;
+}
+#guessblock {
+    color: white;
+    background-color: red;
+    height: 200px;
+    width: 200px;
+    vertical-align: middle;
+    display: inline-block; 
+    align-items: center;
+    font-size: 18pt;
+    font-family: cursive;
+}
+#guessblockcorrect{
+    color: white;
+    background-color: green;
+    height: 200px;
+    width: 200px;
+    vertical-align: middle;
+    display: inline-block; 
+    align-items: center;
+    font-size: 18pt;
+    font-family: cursive;
+}
+#guesstext {
+    color: white;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: 70px;
+}
+#silver {
+    /* reset */
+    color: black;
+    height: 40px;
+    padding: 25px;
+    padding-top: 15px;
+    vertical-align: middle;
+}
+#debugging {
+    color: white;
+}

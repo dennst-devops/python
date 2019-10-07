@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Counter!</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <h1 class="myclass">Counter</h1>
+    {% if counter == 1 %}
+    <h3 class="myclass">{{ counter }} time</h3>
+    {% elif counter > 9000 %}
+    <h1 id="makeitred">IT'S OVER {{ counter }} TIMES!!!!</h1>
+    {% else  %}
+    <h3 class="myclass">{{ counter }} times</h3>
+    {% endif %}
+
+    <div id="buttonholder">
+        <form action="/add2">
+            <input id="red" type="submit" value="Add two visits!">
+        </form>
+        <form action="/reset">
+            <input id="green" type="submit" value="Reset">
+        </form>
+        <!-- <form action="/addmore">
+            <input id="yellow2" type="submit" value="Add more!">
+        </form> -->
+
+            <form action="/addmore" method="POST">
+                Number of visits to add:<br>
+                <textarea name="addme" rows="1" cols="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></textarea>
+                <div id="btn">
+                    <input id="yellow" type='submit' value='Add visits'>
+                </div>
+            </form>
+
+    </div>
+    {% if counter > 9000 %}
+    <img src="./static/img/itsover9000.jpg" alt="">
+    {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+*{
+    /* border: 1px black solid; */
+    font-family: sans-serif;
+}
+.myclass {
+    text-align: center;
+}
+#buttonholder {
+    width: 100%;
+    text-align: center;
+}
+form {
+    display: inline-block;
+    align-items: center;
+}
+#red {
+    /* +2 */
+    color: white;
+    background-color: red;
+    height: 40px;
+    border-radius: 15px;
+    padding: 25px;
+    padding-top: 15px;
+    vertical-align: middle;
+    margin-bottom: 50px;    
+}
+#green {
+    /* reset */
+    color: white;
+    background-color: green;
+    height: 40px;
+    border-radius: 15px;
+    padding: 25px;
+    padding-top: 15px;
+    vertical-align: middle;
+    margin-bottom: 50px;
+    margin-right: 20px;
+}
+#yellow {
+    /* reset */
+    color: black;
+    background-color: yellow;
+    height: 40px;
+    border-radius: 15px;
+    padding: 25px;
+    padding-top: 15px;
+    vertical-align: middle;
+}
+#makeitred {
+    color: red;
+    text-align: center;
+}

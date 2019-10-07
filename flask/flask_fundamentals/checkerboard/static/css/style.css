@@ -1,0 +1,22 @@
+/* CSS for Playground */
+.box {
+    height: 50px;
+    width: 50px;
+    /* background-color: blue; */
+    display: inline-block;
+    border: 1px solid white;
+
+}
+.row {
+    height: 55px;
+    width: 100%;
+}
+#header {
+    text-align: center;
+}
+#parent {
+    height: 100%;
+    width: 100%;
+    /* background-color: red; */
+    text-align: center;
+}

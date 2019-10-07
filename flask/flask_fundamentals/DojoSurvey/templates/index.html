@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Survey Index</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="mainbox">
+        <form action='/process' method='post'>
+
+            <div id="namebox">
+                <p id="yournametxt">Your Name:</p>
+                <input type='text' name='name' id="name">
+            </div>
+            <div id="locbox">
+                Dojo Location:
+                <select name="location">
+                    <option value="seattle">Seattle</option>
+                    <option value="la">LA</option>
+                    <option value="dallas">Dallas</option>
+                    <option value="chicago">Chicago</option>
+                    <option value="tulsa">Tulsa</option>
+                    <option value="oakland">Oakland</option>
+                    <option value="boise">Boise</option>
+                </select>
+            </div>
+            <div id="langbox">
+                Favorite Language:
+                <select name="language">
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="C#">C#</option>
+                    <option value="bash">bash</option>
+                    <option value="emacs_lisp">emacs lisp</option>
+                    <option value="assembly">assembly</option>
+                </select>
+            </div>
+            <div id="commbox">
+                Comment (optional):
+                <textarea name="message" rows="10" cols="30"></textarea>
+            </div>
+            <div id="icebox">
+                <p>Do you like ice cream?</p>
+                <input type="radio" name="ice" value="Yes"> Yes
+                <input type="radio" name="ice" value="No"> No
+                <input type="radio" name="ice" value="Don't know" checked> I'm not sure
+            </div>
+            <!-- <div id="chkbox">
+                <p>What type of vehicle(s) do you own?</p>
+                <input type="checkbox" name="Car" value="Car" checked> I have a car
+                <input type="checkbox" name="Boat" value="Boat"> I have a boat
+                <input type="checkbox" name="Scooter" value="Scooter"> I have a scooter
+            </div> -->
+            <div id="btn">
+                <input type='submit' value='Submit (to the webmaster)'>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

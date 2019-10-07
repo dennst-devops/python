@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Great Number Game</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <h1 class="myclass">Welcome to the Great Number Game!</h1>
+    <h2 class="myclass">I am thinking of a number between 1 and 100</h2>
+
+    {% if jinja_dispmsg == "correct" %}
+    <h3 class="myclass">You took {{ jinja_counter }} guesses.</h3>
+    {% else %}
+    <h3 class="myclass">Take a guess!</h3>
+    {% endif %}
+    {% if session['counter'] > 0 %}
+    {% if session['counter'] == 1 %}
+    <h4 class="myclass">You have {{ session['counter'] }} guess left.</h4>
+    {% else %}
+    <h4 class="myclass">You have {{ session['counter'] }} guesses left.</h4>
+    {% endif %}
+    {% endif %}
+
+    <div id="centerthis">
+        {% if jinja_dispmsg == "startpage" %}
+        <br>
+        {% elif jinja_dispmsg == "gameover" %}
+        <div id="guessblock">
+            <p id="guesstext">Out of guesses!</p>
+            <form action="/reset" method="POST">
+                <input id="silver" type='submit' value='Play again!'>
+            </form>
+        </div>
+        {% elif jinja_dispmsg == "toohigh" %}
+        <div id="guessblock">
+            <p id="guesstext">Too high!</p>
+            {% elif jinja_dispmsg == "toolow" %}
+            <div id="guessblock">
+                <p id="guesstext">Too Low!</p>
+                {% elif jinja_dispmsg == "correct" %}
+                <div id="guessblockcorrect">
+                    <p id="guesstext">Correct!</p>
+                    {% if jinja_dispmsg != "gameover" %}
+                    <form action="/reset" method="POST">
+                        <input id="silver" type='submit' value='Play again!'>
+                    </form>
+                    {% endif %}
+                    {% else %}
+                    <p id="guesstext">Unexpected error...</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% if jinja_dispmsg != "correct" %}
+            <div id="buttonholder">
+                <form action="/guess" method="POST">
+                    <textarea name="myguess" rows="1" cols="10"
+                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'></textarea>
+                    <div id="btn">
+                        <input id="silver" type='submit' value='Submit'>
+                    </div>
+                </form>
+            </div>
+            {% endif %}
+            <span id="debugging">
+                {{ jinja_num }}
+                <br>
+                {{jinja_dispmsg}}
+            </span>
+</body>
+
+</html>
