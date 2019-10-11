@@ -1,0 +1,40 @@
+*{
+    border: 1px green dotted;
+    font-family: sans-serif;
+}
+#bookcontainer {
+    height: 700px;
+    width: 1000px;
+    text-align: center;
+}
+#authcontainer {
+    height: 700px;
+    width: 1000px;
+    text-align: center;
+}
+#bookcontainer {
+    display: inline-block;
+}
+#bookadd {
+    display: inline-block;
+}
+#booklistdiv {
+    display: inline-block;
+}
+#bookspacer {
+    display: inline-block;
+    height: 50px;
+    width: 200px;
+}
+
+#authadd {
+    display: inline-block;
+}
+#authlistdiv {
+    display: inline-block;
+}
+#authspacer {
+    display: inline-block;
+    height: 50px;
+    width: 200px;
+}

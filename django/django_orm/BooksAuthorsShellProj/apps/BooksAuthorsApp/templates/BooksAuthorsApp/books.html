@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Books and Authors</title>
+    <!-- <meta http-equiv="refresh" content="3"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'BooksAuthorsApp/css/style.css' %}">
+</head>
+
+<body>
+    <div id="bookscontainer">
+        <h1>{{ dj_bookid.title }}</h1>
+        ID: {{ dj_bookid.id }}
+        <br>
+        Description: {{ dj_bookid.desc }}
+        <br>
+        Authors: <br>
+        {% for a in dj_bookid.books_id.all %}
+        {{a.first_name}} {{a.last_name}} <br>
+        {% endfor %}
+    </div>
+    <div id="addbookcombo">
+        <form action="/addauthtobook" method="POST">
+            {% csrf_token %}
+            <select>
+                {% for a in dj_bookid.books_id.all %}
+                <option value="{{a.id}}">{{a.first_name}} {{a.last_name}}</option>
+                {% endfor %}
+            </select>
+            <input id="addauth" type="submit" value="Add an Author">
+        </form>
+
+    </div>
+</body>
+
+</html>

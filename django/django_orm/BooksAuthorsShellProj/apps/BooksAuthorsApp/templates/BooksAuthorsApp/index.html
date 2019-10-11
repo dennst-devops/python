@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Books and Authors</title>
+    <!-- <meta http-equiv="refresh" content="3"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'BooksAuthorsApp/css/style.css' %}">
+</head>
+<!-- remember csrf_token!!! -->
+<body>
+    <div id="bookcontainer">
+        <div id="bookadd">
+            <h1>Add a book</h1>
+            <form action="/addbook" method="POST">
+                {% csrf_token %}
+                Title:
+                <input type="text" name="ht_title">
+                <br>
+                Description:
+                <input type="text" name="ht_desc">
+                <br>
+                <input id="add" type="submit" value="Add">
+            </form>
+        </div>
+        <div id="bookspacer"> </div>
+        <div id="booklistdiv">
+            <table id="booklisttable">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Action</th>
+                </tr>
+            {% for b in dj_books %}
+                <tr>
+                    <td>{{ b.id }}</td>
+                    <td>{{ b.title }}</td>
+                    <td><a href="/books/{{ b.id }}">View</a></td>
+                    
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

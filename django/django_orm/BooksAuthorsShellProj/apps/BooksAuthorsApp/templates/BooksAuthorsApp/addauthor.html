@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Books and Authors</title>
+    <!-- <meta http-equiv="refresh" content="3"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'BooksAuthorsApp/css/style.css' %}">
+</head>
+
+<body>
+    <div id="authcontainer">
+        <div id="authadd">
+            <h1>Add an Author</h1>
+            <form action="/addauth" method="POST">
+                {% csrf_token %}
+                First Name:
+                <input type="text" name="ht_fname">
+                <br>
+                Last Name:
+                <input type="text" name="ht_lname">
+                <br>
+                Notes:
+                <input type="text" name="ht_notes">
+                <br>
+                <input id="add" type="submit" value="Add">
+            </form>
+        </div>
+        <div id="authspacer"> </div>
+        <div id="authlistdiv">
+            <table id="authlisttable">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+                {% for b in dj_authors %}
+                <tr>
+                    <td>{{ b.id }}</td>
+                    <td>{{ b.first_name }} {{ b.last_name }}</td>
+                    <td><a href="/authors/{{ b.id }}">View</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
