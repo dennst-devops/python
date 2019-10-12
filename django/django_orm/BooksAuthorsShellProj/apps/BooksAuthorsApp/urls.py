@@ -13,5 +13,7 @@ urlpatterns = [
     url(r'^addauth$', views.addauth),
     url(r'^authors$', views.authors),
     url(r'^authors/(?P<ht_showauth>\d+)$', views.authorsid),
+    url(r'^addauthtobook$', views.addauthtobook),
+    url(r'^addbooktoauth$', views.addbooktoauth),
 ]
 

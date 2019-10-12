@@ -26,6 +26,19 @@
         {{a.title}} <br>
         {% endfor %}
     </div>
+    <div id="addauthcombo">
+        <form action="/addbooktoauth" method="POST">
+            <input type="hidden" name="ht_authid" value="{{ dj_authid.id }}">
+            {% csrf_token %}
+            <select name="ht_booktoadd">
+                <!-- if all auths are not in dj_bookid.books_id.all, display  -->
+                {% for a in dj_allbooks %}
+                <option value="{{a.id}}">{{a.title}}</option>
+                {% endfor %}
+            </select>
+            <input id="addbooktoauth" type="submit" value="Add a Book">
+        </form>
+    </div>
 </body>
 
 </html>

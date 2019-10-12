@@ -28,15 +28,16 @@
     </div>
     <div id="addbookcombo">
         <form action="/addauthtobook" method="POST">
+            <input type="hidden" name="ht_bookid" value="{{ dj_bookid.id }}">
             {% csrf_token %}
-            <select>
-                {% for a in dj_bookid.books_id.all %}
+            <select name="ht_authtoadd">
+                <!-- if all auths are not in dj_bookid.books_id.all, display  -->
+                {% for a in dj_allauths %}
                 <option value="{{a.id}}">{{a.first_name}} {{a.last_name}}</option>
                 {% endfor %}
             </select>
-            <input id="addauth" type="submit" value="Add an Author">
+            <input id="addauthtobook" type="submit" value="Add an Author">
         </form>
-
     </div>
 </body>
 
