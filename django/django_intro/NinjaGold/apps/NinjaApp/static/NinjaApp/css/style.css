@@ -1,0 +1,54 @@
+*{
+    /* border: 1px black solid; */
+    font-family: sans-serif;
+}
+#goldcounter {
+    height: 20px;
+    width: 50px;
+    border: 1px black solid;
+    display: inline-block;
+    color: red;
+    
+}
+#container {
+    height: 500px;
+    width: 1000px;
+}
+.locations {
+    display: inline-block;
+    height: 180px;
+    width: 180px;
+    text-align: center;
+    border: 2px black solid; 
+}
+.earns {
+    font-size: 10pt;
+}
+#locboxes {
+    text-align: center;
+}
+#resetbtn {
+    display: inline-block;
+    margin-left: 100px;
+}
+.red {
+    color: red;
+}
+.green {
+    color: green;
+}
+.blue {
+    color: blue;
+}
+#activityarea {
+    height: 200px;
+    width: 500px;
+    border: 1px black solid; 
+    overflow-y: scroll;
+    margin-left: 125px;
+    font-size: 10pt;
+    padding: 5px;
+}
+#span1 {
+
+}

@@ -1,0 +1,85 @@
+<!-- Dennis S -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Gold (django version)</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'NinjaApp/css/style.css' %}">
+</head>
+
+<body>
+    <div id="containter">
+        <div>
+            Your gold: <p id="goldcounter">{{dj_gold}}</p>
+            <form id="resetbtn" action="/resetgold">
+                {% csrf_token %}
+                <input type="submit" value="Reset Gold">
+            </form>
+            <form id="resetbtn" action="/reset">
+                {% csrf_token %}
+                <input type="submit" value="Reset All">
+            </form>
+        </div>
+        <div id="locboxes">
+            <div class="locations">
+                <h2>Farm</h2>
+                <p class="earns">(earns 10 - 20 gold)</p>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="html_lnum" value="10">
+                    <input type="hidden" name="html_hnum" value="20">
+                    <input type="hidden" name="html_loc" value="farm">
+                    <input id="findit" type="submit" value="Find Gold!">
+                </form>
+            </div>
+            <div class="locations">
+                <h2>Cave</h2>
+                <p class="earns">(earns 5 - 10 gold)</p>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="html_lnum" value="5">
+                    <input type="hidden" name="html_hnum" value="10">
+                    <input type="hidden" name="html_loc" value="cave">
+                    <input id="findit" type="submit" value="Find Gold!">
+                </form>
+            </div>
+            <div class="locations">
+                <h2>House</h2>
+                <p class="earns">(earns 2 - 5 gold)</p>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="html_lnum" value="2">
+                    <input type="hidden" name="html_hnum" value="5">
+                    <input type="hidden" name="html_loc" value="house">
+                    <input id="findit" type="submit" value="Find Gold!">
+                </form>
+            </div>
+            <div class="locations">
+                <h2>Casino</h2>
+                <p class="earns">(earns/takes -50 - +50 gold)</p>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="html_lnum" value="-50">
+                    <input type="hidden" name="html_hnum" value="50">
+                    <input type="hidden" name="html_loc" value="casino">
+                    <input id="findit" type="submit" value="Find Gold!">
+                </form>
+            </div>
+        </div>
+        <span id="span1">Activities:</span><br>
+        <div id="activityarea">
+            {% for key in request.session.activity %}
+            <p>{{ key|safe }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+*{
+    border: 1px green dotted;
+    font-family: sans-serif;
+}
+#container {
+    height: 700px;
+    width: 800px;
+    margin-left: 500px;
+    text-align: center;
+}
+form {
+    display: inline-block;
+}
+#header {
+    margin: 20px;
+    padding: 5px;
+    height: 70px;
+    width: 300px;
+    margin-top: 50px;
+}
+#rndword {
+    border: 2px black solid;
+    height: 100px;
+    width: 400px;
+    margin-left: 200px;
+    vertical-align: middle;
+}
