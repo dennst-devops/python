@@ -30,3 +30,16 @@ p {
 h1 {
     text-align: center;
 }
+#successlink {
+    display: inline-block;
+    margin-left: 500px;
+}
+#successpage {
+    display: inline-block;
+}
+#successh1 {
+    display: inline-block;
+}
+#green {
+    color: green;
+}
