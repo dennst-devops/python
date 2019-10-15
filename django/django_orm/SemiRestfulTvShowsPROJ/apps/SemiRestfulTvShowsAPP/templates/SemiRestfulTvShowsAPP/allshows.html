@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Shows</title>
+    <!-- <meta http-equiv="refresh" content="3"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'SemiRestfulTvShowsAPP/css/style.css' %}">
+</head>
+<!-- remember csrf_token!!! -->
+
+<body>
+    <div id="container">
+        <h1>All Shows</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Network</th>
+                <th>Release Date</th>
+                <th>Actions</th>
+            </tr>
+            {% for s in dj_allshows %}
+            <tr>
+                <td><a href="/shows/{{ s.id }}">{{ s.id }}</a></td>
+                <td>{{ s.title }} </td>
+                <td>{{ s.network }} </td>
+                <td>{{ s.release_date }} </td>
+                <td><a href="/shows/{{ s.id }}">Show</a> | <a href="/shows/{{ s.id }}/edit">Edit</a> | <a href="/shows/{{ s.id }}/destroy">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+</body>
+
+</html>

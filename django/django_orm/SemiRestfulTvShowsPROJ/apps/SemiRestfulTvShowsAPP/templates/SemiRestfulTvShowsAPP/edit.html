@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit a New Show</title>
+    <!-- <meta http-equiv="refresh" content="3"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'SemiRestfulTvShowsAPP/css/style.css' %}">
+</head>
+<!-- remember csrf_token!!! -->
+
+<body>
+    <div id="container">
+        <h1>Edit Show {{dj_showid.id}}</h1>
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+            <form action="/shows/{{dj_showid.id}}/update" method="POST">
+                {% csrf_token %}
+                <p>Title</p>
+                <input type="text" name="ht_title" id="title" value="{{dj_showid.title}}">
+                <P>Network</P>
+                <input type="text" name="ht_network" id="network" value="{{dj_showid.network}}">
+                <p>Release Date</p>
+                <input type="date" name="ht_reldate" id="reldate" value="{{dj_showid.release_date}}">
+                <p>Description</p>
+                <textarea rows="4" cols="50" name="ht_desc" id="desc">{{dj_showid.desc}}</textarea>
+                <input id="add" type="submit" value="Update">
+                <a href="/shows/{{dj_showid.id}}">Go to show </a>
+            </form>
+
+    </div>
+</body>
+
+</html>

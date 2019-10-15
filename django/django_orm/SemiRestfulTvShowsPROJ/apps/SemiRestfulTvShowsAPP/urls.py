@@ -8,9 +8,11 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index),
-    url(r'^addnew$', views.addnew),
-    url(r'^allshows$', views.allshows),
-    url(r'^editshows$', views.editshows),
-    url(r'^showdetails$', views.showdetails),
-    url(r'^destroy$', views.destroy),
+    url(r'^shows$', views.allshows),
+    url(r'^shows/new$', views.addshow),
+    url(r'^shows/addshow$', views.addshow),
+    url(r'^shows/(?P<ht_showid>\d+)/edit$', views.editshows),
+    url(r'^shows/(?P<ht_showid>\d+)$', views.showdetails),
+    url(r'^shows/(?P<ht_showid>\d+)/destroy$', views.destroy),
+    url(r'^shows/(?P<ht_showid>\d+)/update$', views.update),
 ]
