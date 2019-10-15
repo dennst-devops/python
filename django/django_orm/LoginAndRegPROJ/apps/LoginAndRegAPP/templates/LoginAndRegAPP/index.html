@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login & Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'LoginAndRegAPP/css/style.css' %}">
+</head>
+<!-- remember csrf_token!!! -->
+
+<body>
+    <div id="container">
+        <div id="register">
+            <h1>Registration</h1>
+            {% if messages %}
+            <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="/registration_process" method="POST">
+                {% csrf_token %}
+                <p>First Name</p>
+                <input type="text" name="ht_fname"> <br>
+                <p>Last Name</p>
+                <input type="text" name="ht_lname"><br>
+                <p>Email</p>
+                <input type="text" name="ht_email"><br>
+                <p>Password</p>
+                <input type="password" name="ht_password"><br>
+                <p>Confirm PW</p>
+                <input type="password" name="ht_confpassword"><br>
+                <div class="btncenter">
+                    <input id="registerbtn" type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+        <div id="logindiv">
+            <h1>Login</h1>
+            {% if messages %}
+            <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="/login_process" method="POST">
+                {% csrf_token %}
+                <p>Email</p>
+                <input type="text" name="ht_email"><br>
+                <p>Password</p>
+                <input type="password" name="ht_password"><br>
+                <div class="btncenter">
+                    <input id="loginbtn" type="submit" value="Log In">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

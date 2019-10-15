@@ -1,0 +1,32 @@
+*{
+    /* border: 1px black solid; */
+    font-family: sans-serif;
+}
+#container {
+    height: 800px;
+    width: 1300px;
+    display: inline-block;
+}
+#register {
+    height: 700px;
+    width: 320px;
+    display: inline-block;
+    margin-left: 100px;
+}
+#logindiv {
+    height: 700px;
+    width: 350px;
+    display: inline-block;
+    margin-left: 50px;
+    vertical-align: top;
+}
+p {
+    display: inline-block;
+}
+.btncenter {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
