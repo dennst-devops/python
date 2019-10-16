@@ -12,9 +12,32 @@ class UserValidator(models.Manager):
             errors["fname"] = "First name needs to be at least 2 characters"
         if len(postData['ht_lname']) < 2:
             errors["lname"] = "Last name needs to be at least 2 characters"
-        # if postData['ht_bdate'] > strftime("%Y-%m-%d", localtime()):
-        #     errors["date"] = "Birthdate needs to be before today"
-        #     errors["date"] = "User needs to be at least 13 years old"
+        if postData['ht_bday'] > strftime("%Y-%m-%d", localtime()):
+            errors["date1"] = "Birthdate needs to be before today (no future dates)"
+        # if postData['ht_bday'] > (int(strftime("%Y-%m-%d", localtime())) - 4745):
+        #     print(int(strftime("%Y-%m-%d", localtime())))
+        #     errors["date2"] = "User needs to be at least 13 years old"
+            #4745 days
+            #datetime.datetime.now() - datetime.timedelta(days=3*365)
+            #seconds in a year: 409968000
+            #mytime = datetime.datetime(int(x[0]), int(x[1]), int(x[2])).timestamp()
+            #2006-10-18
+        print("*"*32)
+        print(postData['ht_bday'])
+        userbday=postData['ht_bday'].split("-")
+        print(userbday[0])
+        print(userbday[1])
+        print(userbday[2])
+
+        mygoodmo=userbday[1].lstrip("0")
+        mygoodday=userbday[2].lstrip("0")
+        print(mygoodmo)
+        print(mygoodday)
+        if int(userbday[0]) > 1970:
+            thentime = datetime.datetime(int(userbday[0]), int(mygoodmo), int(mygoodday)).timestamp()
+            nowtime=round(datetime.datetime.now().timestamp())
+            if nowtime - thentime < 409968000:
+                errors["date2"] = "User needs to be at least 13 years old"
         if len(postData['ht_password']) < 8:
             errors["pwlen"] = "Password needs to be at least 8 characters"
         if postData['ht_password'] != postData['ht_confpassword']:
@@ -47,7 +70,7 @@ class User(models.Model):
     lname = models.TextField(max_length=255)
     email = models.TextField(max_length=255)
     password = models.TextField(max_length=255)
-    # bday = models.DateField(null=True)
+    bday = models.DateField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserValidator()

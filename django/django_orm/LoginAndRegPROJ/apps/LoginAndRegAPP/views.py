@@ -22,9 +22,7 @@ def registration_process(request):
     password = request.POST['ht_password']
     pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
     User.objects.create(fname=request.POST['ht_fname'], lname=request.POST['ht_lname'], email=request.POST['ht_email'], password=pw_hash)
-    print("+"*30)
-    request.session['pt_id'] = User.objects.latest().id
-    print("#"*30)
+    request.session['pt_id'] = User.objects.get(email=request.POST['ht_email']).id
     return redirect('/success')
 
 def login_process(request):
@@ -34,8 +32,7 @@ def login_process(request):
             messages.error(request, value)
         return redirect('/')
     request.session['pt_id'] = User.objects.get(email=request.POST['ht_email']).id
-    print("*"*30)
-    print(request.session['pt_id'])
+    print(key) #just to get rid of the annoying underline above...
     return redirect('/success')
     # return HttpResponse("this is the equivalent of login_process!")
 
@@ -43,7 +40,6 @@ def success(request):
     if 'pt_id' not in request.session:
         return redirect('/')
     this_user = User.objects.get(id=request.session['pt_id']).fname
-    print(this_user)
     context = {
         "pt_fname": this_user,
     }
