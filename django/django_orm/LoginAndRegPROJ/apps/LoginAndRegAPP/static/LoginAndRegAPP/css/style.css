@@ -90,3 +90,9 @@ h1 {
 .messagesclass {
     padding-left: 20px;
 }
+.labels {
+    width: 100px;
+}
+#datebox {
+    width: 195px;
+}

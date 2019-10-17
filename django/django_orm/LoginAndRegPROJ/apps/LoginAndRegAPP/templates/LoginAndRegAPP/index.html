@@ -26,19 +26,21 @@
             </ul>
             {% endif %}
             <form action="/registration_process" method="POST">
-                {% csrf_token %}
-                <p>First Name</p>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ht_fname"> <br>
-                <p>Last Name</p>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ht_lname"><br>
-                <p>Birthday</p>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="ht_bday"><br>
-                <p>Email</p>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ht_email"><br>
-                <p>Password</p>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="ht_password"><br>
-                <p>Confirm PW</p>
-                &nbsp;&nbsp;&nbsp;<input type="password" name="ht_confpassword"><br>
+                <div class="regandlog">
+                    {% csrf_token %}
+                    <p class="labels">First Name</p>
+                    <input type="text" name="ht_fname"> <br>
+                    <p class="labels">Last Name</p>
+                    <input type="text" name="ht_lname"><br>
+                    <p class="labels">Birthday</p>
+                    <input type="date" name="ht_bday" id="datebox"><br>
+                    <p class="labels">Email</p>
+                    <input type="text" name="ht_email"><br>
+                    <p class="labels">Password</p>
+                    <input type="password" name="ht_password"><br>
+                    <p class="labels">Confirm PW</p>
+                    <input type="password" name="ht_confpassword"><br>
+                </div>
                 <div class="btncenter">
                     <input id="registerbtn" type="submit" value="Register">
                 </div>
@@ -55,10 +57,10 @@
             {% endif %} -->
             <form action="/login_process" method="POST">
                 {% csrf_token %}
-                <p>Email</p>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ht_email"><br>
-                <p>Password</p>
-                &nbsp;<input type="password" name="ht_password"><br>
+                <p class="labels">Email</p>
+                <input type="text" name="ht_email"><br>
+                <p class="labels">Password</p>
+                <input type="password" name="ht_password"><br>
                 <div class="btncenter">
                     <input id="loginbtn" type="submit" value="Log In">
                 </div>
