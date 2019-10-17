@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Wall</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'LoginAndRegAPP/css/style.css' %}">
+</head>
+<!-- remember csrf_token!!! -->
+
+<body>
+    <div id="successwall">
+        <h2 id="successh2">CodingDojo Wall</h1>
+            <span id="wallspan"> Welcome {{pt_fname}}!<span>
+                    <a href="/clear_process" id="successlink2">Log Out</a>
+    </div>
+    {% if messages %}
+    <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+    <div id="msgandcomm">
+        <p>Post a message</p><br>
+        <form action="/post_message" method="POST">
+            {% csrf_token %}
+            <textarea name="ht_messagetxt" id="messagetxt" cols="100" rows="3"></textarea>
+            <div class="btnright">
+                <input id="postmessage" type="submit" value="Post a message">
+            </div>
+        </form>
+        {% for m in all_messages %} 
+        <span class="posterinfo">{{m.messagemaker.fname}} {{m.messagemaker.lname}} - {{m.created_at}}</span><br>
+        <p class="messagesclass">{{m.postmessage}}</p> <br>
+            {% for c in all_comments %} 
+            {% if c.commenttomessage.id == m.id %}
+            <span class="posterinfo">{{c.commentmaker.fname}} {{c.commentmaker.lname}} - {{c.created_at}}</span><br>
+            <p class="commentsclass">{{c.comment}}</p> <br>
+            {% endif %}
+            {% endfor %}
+            <p class="commentsclass">Post a comment</p><br>
+            <form action="/post_comment" method="POST">
+                {% csrf_token %}
+                <textarea name="ht_commenttxt" id="commenttxt" cols="90" rows="3"></textarea>
+                <input type="hidden" value={{m.id}} name="ht_msgid">
+                <div class="btnright">
+                    <input id="postcomment" type="submit" value="Post a comment">
+                </div>
+            </form>
+
+        {% endfor %}
+    </div>
+</body>

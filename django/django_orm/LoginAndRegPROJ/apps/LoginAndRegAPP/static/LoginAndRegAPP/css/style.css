@@ -43,3 +43,50 @@ h1 {
 #green {
     color: green;
 }
+
+#successh2 {
+    display: inline-block;
+}
+#successlink {
+    display: inline-block;
+    margin-left: 100px;
+}
+#wallspan{
+    display: inline-block;
+    margin-left: 800px;
+    text-align: right;
+}
+#successlink2 {
+    display: inline-block;
+    margin-left: 100px;
+    text-align: right;
+}
+#successwall {
+    border: 2px black solid;
+}
+#msgandcomm {
+    margin-left: 25px;
+    width: 500px;
+}
+#postmessage {
+    margin-left: 690px;
+    background-color: blue;
+    color: white;
+}
+#postcomment {
+    margin-left: 690px;
+    background-color: green;
+    color: white;
+}
+#commenttxt {
+    margin-left: 70px;
+}
+.posterinfo {
+    font-size: 10pt;
+}
+.commentsclass {
+    padding-left: 20px;
+}
+.messagesclass {
+    padding-left: 20px;
+}
