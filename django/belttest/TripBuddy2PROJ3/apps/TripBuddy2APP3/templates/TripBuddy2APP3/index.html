@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trip Buddy</title>
+
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'TripBuddy2APP3/css/style.css' %}">
+
+</head>
+
+<div class="container">
+    <div class="row">
+        <div class="col s8">
+            <h5 id="pageheaderh2">Welcome! Let's travel!</h5>
+        </div>
+    </div>
+    <hr>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="row">
+        <div class="col s4">
+            <form action="/register_process" method="POST">
+                {% csrf_token %}
+                <h5 class="center-align">Register</h5>
+                <p>First Name</p>
+                <input type="text" name="ht_fname"> <br>
+                <p>Last Name</p>
+                <input type="text" name="ht_lname"><br>
+                <p>Email Address</p>
+                <input type="text" name="ht_email"><br>
+                <p>Password</p>
+                <input type="password" name="ht_password"><br>
+                <p>Password Confirmation</p>
+                <input type="password" name="ht_confpassword"><br>
+                <input id="registerbtn" type="submit" value="Register"
+                    class="waves-effect waves-light btn-small green right">
+            </form>
+        </div>
+        <div class="col s2"></div>
+        <form action="/login_process" method="POST">
+            <div class="col s4">
+                {% csrf_token %}
+                <h5 class="center-align">Log In</h5>
+                <p class="labels">Email</p>
+                <input type="text" name="ht_email"><br>
+                <p class="labels">Password</p>
+                <input type="password" name="ht_password"><br>
+                <input id="signinbtn" type="submit" value="Login"
+                    class="waves-effect waves-light btn-small green right">
+            </div>
+        </form>
+    </div><!-- close container -->
+    </body>
+</html>

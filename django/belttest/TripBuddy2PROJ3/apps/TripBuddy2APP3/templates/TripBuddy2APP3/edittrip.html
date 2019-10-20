@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Trip</title>
+
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'TripBuddy2APP/css/style.css' %}">
+
+</head>
+
+<div class="container">
+    <div class="row">
+        <div class="col s8">
+            <h5 id="pageheaderh2">Hello {{pt_fname}}! Let's edit your trip!</h5>
+        </div>
+        <div class="col s3">
+        </div>
+        <div class="col s1">
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+    <form action="/trips/update/{{pt_trips.id}}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col s2">Destination:
+            </div>
+            <div class="col s4"><input type="text" name="ht_dest" value="{{pt_trips.dest}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s2">Start Date:
+            </div>
+            <div class="col s4"><input type="date" name="ht_start" value="{{pt_trips.start}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s2">End Date:
+            </div>
+            <div class="col s4"><input type="date" name="ht_end" value="{{pt_trips.end}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s2">Plan:
+            </div>
+            <div class="col s4"><textarea id="textarea1" class="materialize-textarea"
+                    name="ht_plan">{{pt_trips.plan}}</textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s3"><input id="registerbtn" type="submit" value="update" class="waves-effect waves-light btn-small green right">
+            </div>
+            <div class="col s3"><a class="waves-effect waves-light btn-small red" href="/dashboard">Cancel</a>
+            </div>
+        </div>
+    </form>
+    
+
+</div><!-- close container -->
+
+</body>
+
+</html>
