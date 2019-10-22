@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trip Buddy Dashboard</title>
+
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'BeltPrepAPP/css/style.css' %}">
+
+</head>
+
+<div class="container">
+    <div class="row">
+        <div class="col s7">
+            <h5 id="pageheaderh2">Hello {{pt_fname}}! </h5>
+        </div>
+        <div class="col s2">
+            <a href="/logout_process">Logout</a>
+        </div>
+        <div class="col s3">
+            <a href="/books/new">Create a new book</a>
+        </div>
+    </div>
+    <table class="striped">
+        <tr>
+            <th>Title</th>
+            <th>Publication Date</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        {% for t in pt_books %}
+        <tr>
+            <td><a href="/books/{{ t.id }}">{{ t.title }}</a></td>
+            <td>{{ t.publishdate }}</td>
+            <td>{{ t.desc }}</td>
+            <td><a href="/books/edit/{{ t.id }}">Edit</a> | <a href="/books/delete/{{ t.id }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div><!-- close container -->
+
+</body>
+
+</html>

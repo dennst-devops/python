@@ -1,0 +1,13 @@
+*{
+    /* border: 1px black solid; */
+    /* font-family: sans-serif; */
+}
+.container {
+    padding: 20px;
+}
+li {
+    color: red;
+}
+textarea.materialize-textarea {
+    height: 6rem;
+}
